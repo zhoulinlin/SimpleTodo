@@ -6,21 +6,22 @@
     android:layout_height="wrap_content"
     android:id="@+id/relativeLayout">
 
-    <ListView
-        android:id="@+id/lvTaskList"
+    <TextView
+        android:id="@+id/tvHint"
+        android:hint="Edit Item Below:"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
-    <EditText android:id="@+id/etInputTask" android:layout_width="match_parent"
+    <EditText android:id="@+id/etTaskContent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Enter a new item"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/lvTaskList" />
+        app:layout_constraintTop_toBottomOf="@id/tvHint" />
 
-    <Button android:id="@+id/btnAddItem" android:layout_width="wrap_content"
+    <Button android:id="@+id/btnSave" android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginRight="5dp"
-        android:text="ADD ITEM"
-        app:layout_constraintTop_toBottomOf="@id/etInputTask"
+        android:text="SAVE"
+        app:layout_constraintTop_toBottomOf="@id/etTaskContent"
         app:layout_constraintLeft_toLeftOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
