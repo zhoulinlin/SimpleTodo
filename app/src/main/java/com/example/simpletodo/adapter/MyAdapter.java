@@ -17,7 +17,13 @@ public class MyAdapter extends BaseAdapter {
 
     private List<Task> mData = new ArrayList<>();
     private LayoutInflater mInflater;
+    Context mContext;
 
+
+    public MyAdapter(List<Task> data,Context context) {
+        mData = data;
+        mContext = context;
+    }
 
     public void setmData(List<Task> tasks){
         mData = tasks;
@@ -46,11 +52,14 @@ public class MyAdapter extends BaseAdapter {
 //        int type = getItemViewType(position);
         if (convertView == null) {
             holder = new ViewHolder();
-            convertView = mInflater.inflate(R.layout.list_item, null);
+            convertView = LayoutInflater.from(mContext).inflate(R.layout.list_item, null);
+            holder.textView = convertView.findViewById(R.id.tvContent);
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder)convertView.getTag();
         }
+
+
         holder.textView.setText(mData.get(position).getmContent());
         return convertView;
     }

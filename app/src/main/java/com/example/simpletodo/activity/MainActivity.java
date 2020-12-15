@@ -39,14 +39,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         mainList = findViewById(R.id.lvTaskList);
-        mAdapter = new MyAdapter();
         mBtnAddItem = findViewById(R.id.btnAddItem);
         etInput = findViewById(R.id.etInputTask);
 
+        mTasks = DBController.getInstance().getTaskDao().queryTaskList();
+        mAdapter = new MyAdapter(mTasks,MainActivity.this);
         mainList.setAdapter(mAdapter);
 
-        mTasks = DBController.getInstance().getTaskDao().queryTaskList();
-        mAdapter.setmData(mTasks);
 
         mainList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -93,5 +92,14 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mTasks = DBController.getInstance().getTaskDao().queryTaskList();
+        mAdapter.setmData(mTasks);
+        mAdapter.notifyDataSetChanged();
+
     }
 }

@@ -65,10 +65,7 @@ public class TaskDao extends DBHelper{
 
         ArrayList<Task> taskList = new ArrayList<Task>();
         Task task;
-        String[] param = new String[1];
-//        param[0] = getCurUserUK();
-        String sql = "select * from " + TABLE_NAME + " where "+ TaskColumns.TASK_ID + " = ? ";
-        Cursor cursor = this.query(sql, param);
+        Cursor cursor = this.query();
 
         if(cursor == null){
             return null;
@@ -153,6 +150,23 @@ public class TaskDao extends DBHelper{
         return Task;
     }
 
+
+    public boolean update(Task task){
+
+        if(task == null){
+            return false;
+        }
+
+        HashMap<String, Object> data  = new HashMap<String, Object>();
+
+        data.put(TaskColumns.CONTENT, task.getmContent());
+        data.put(TaskColumns.TASK_ID, task.getmID());
+        data.put(TaskColumns.DATE, task.getmDate());
+
+        long index = update(getContentValues(task), TaskColumns.TASK_ID
+                + " = ?", new String[]{task.getmID()});
+        return index > 0;
+    }
 
 
 

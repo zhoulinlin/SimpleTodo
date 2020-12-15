@@ -30,15 +30,15 @@ public class DBController {
 
 
     public boolean deleteTask(String taskID){
-
-
         return mTaskDao.deleteTaskByTaskId(taskID);
     }
 
     public boolean addTask(Task ta){
-
-
         return mTaskDao.insertTask(ta);
+    }
+
+    public boolean updateTask(Task ta){
+        return mTaskDao.update(ta);
     }
 
     public TaskDao getTaskDao() {

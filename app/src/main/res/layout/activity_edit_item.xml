@@ -9,6 +9,10 @@
     <TextView
         android:id="@+id/tvHint"
         android:hint="Edit Item Below:"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="15dp"
+        android:textColor="@color/black"
+        android:textSize="20dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
@@ -16,12 +20,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
         app:layout_constraintTop_toBottomOf="@id/tvHint" />
 
     <Button android:id="@+id/btnSave" android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginRight="5dp"
+        android:layout_marginLeft="15dp"
         android:text="SAVE"
+        android:layout_marginTop="20dp"
         app:layout_constraintTop_toBottomOf="@id/etTaskContent"
         app:layout_constraintLeft_toLeftOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
